@@ -4,7 +4,6 @@ import { useTracker } from '../context/TrackerContext'
 import { getMissing } from '../utils/sheets'
 import Button from './ui/Button'
 
-/** Adds the latest weekly sheet's questions that are not in the list yet. Hidden once all are present. */
 export default function LoadSheetButton({ variant = 'secondary' }) {
   const { questions, importSheet } = useTracker()
   const sheet = SHEETS[SHEETS.length - 1]

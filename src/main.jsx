@@ -6,7 +6,6 @@ import App from './App.jsx'
 import { TrackerProvider } from './context/TrackerContext.jsx'
 import { applyTheme, getInitialTheme } from './utils/theme'
 
-// Apply the saved/system theme before the first render to avoid a flash.
 applyTheme(getInitialTheme())
 
 createRoot(document.getElementById('root')).render(

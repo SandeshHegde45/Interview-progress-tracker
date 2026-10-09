@@ -15,10 +15,6 @@ const VARIANTS = {
     'p-2 text-stone-500 hover:bg-rose-50 hover:text-rose-600 dark:text-stone-400 dark:hover:bg-rose-950 dark:hover:text-rose-400',
 }
 
-/**
- * Polymorphic button. `as={Link}` renders a router link that looks like a button.
- * Defaults to type="button" so it never submits a form by accident.
- */
 export default function Button({
   as: Component = 'button',
   variant = 'primary',

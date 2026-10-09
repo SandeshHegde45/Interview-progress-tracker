@@ -1,7 +1,6 @@
 import { forwardRef } from 'react'
 import { controlClass } from './styles'
 
-/** `options` is an array of strings. `placeholder` adds an empty first option (for filters). */
 const Select = forwardRef(function Select(
   { options, placeholder, hasError = false, compact, inline, className = '', ...props },
   ref,
