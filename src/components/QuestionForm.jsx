@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { Plus } from 'lucide-react'
-import { useTracker } from '../context/TrackerContext'
+import { useTracker } from '../context/useTracker'
 import { CATEGORIES, DIFFICULTIES, STATUSES } from '../utils/constants'
 import Button from './ui/Button'
 import Card from './ui/Card'

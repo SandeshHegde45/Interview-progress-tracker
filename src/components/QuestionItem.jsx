@@ -1,5 +1,5 @@
 import { ExternalLink, Trash2 } from 'lucide-react'
-import { useTracker } from '../context/TrackerContext'
+import { useTracker } from '../context/useTracker'
 import { DIFFICULTY_TONES, STATUSES } from '../utils/constants'
 import Badge from './ui/Badge'
 import Button from './ui/Button'

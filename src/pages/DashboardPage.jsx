@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router'
 import { CheckCircle2, Code2, ClipboardList, ListChecks, MessageSquareText } from 'lucide-react'
-import { useTracker } from '../context/TrackerContext'
+import { useTracker } from '../context/useTracker'
 import { byCategory, computeStats } from '../utils/stats'
 import { CATEGORIES, CATEGORY_LABELS } from '../utils/constants'
 import StatCard from '../components/StatCard'

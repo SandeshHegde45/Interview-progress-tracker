@@ -1,9 +1,8 @@
-import { createContext, useCallback, useContext, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { DEFAULT_MACHINE, MACHINE_STATUSES } from '../utils/constants'
 import { getMissing, sourceIdOf } from '../utils/sheets'
-
-const TrackerContext = createContext(null)
+import { TrackerContext } from './useTracker'
 
 const newId = () =>
   typeof crypto !== 'undefined' && crypto.randomUUID
@@ -14,7 +13,9 @@ function initialMachine() {
   try {
     const legacy = JSON.parse(window.localStorage.getItem('ipt:machine-status'))
     if (MACHINE_STATUSES.includes(legacy)) return { ...DEFAULT_MACHINE, status: legacy }
-  } catch {}
+  } catch (error) {
+    console.warn('Unable to read the legacy machine status from local storage.', error)
+  }
   return DEFAULT_MACHINE
 }
 
@@ -87,10 +88,4 @@ export function TrackerProvider({ children }) {
   )
 
   return <TrackerContext.Provider value={value}>{children}</TrackerContext.Provider>
-}
-
-export function useTracker() {
-  const ctx = useContext(TrackerContext)
-  if (!ctx) throw new Error('useTracker must be used inside <TrackerProvider>')
-  return ctx
 }
