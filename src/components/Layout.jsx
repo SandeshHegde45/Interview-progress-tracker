@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router'
-import { LayoutDashboard, ListChecks, Target } from 'lucide-react'
+import { BookOpenText, LayoutDashboard, ListChecks, Target } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import { focusRing } from './ui/styles'
 
@@ -35,6 +35,10 @@ export default function Layout() {
               <NavLink to="/questions" className={linkClass}>
                 <ListChecks className="h-4 w-4" aria-hidden="true" />
                 Questions
+              </NavLink>
+              <NavLink to="/notes" className={linkClass}>
+                <BookOpenText className="h-4 w-4" aria-hidden="true" />
+                Notes
               </NavLink>
             </nav>
             <ThemeToggle />

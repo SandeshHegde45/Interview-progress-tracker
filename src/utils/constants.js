@@ -23,6 +23,8 @@ export const DEFAULT_MACHINE = {
   liveUrl: '',
   demoUrl: '',
   readmeDone: false,
+  notes: '',
+  doubts: '',
 }
 
 export const DELIVERABLE_TOTAL = 4

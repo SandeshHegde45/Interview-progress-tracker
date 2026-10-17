@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ExternalLink } from 'lucide-react'
+import { BookOpenText, ExternalLink } from 'lucide-react'
+import { Link } from 'react-router'
 import { useTracker } from '../context/useTracker'
 import { DELIVERABLE_TOTAL, deliverablesDone } from '../utils/constants'
 import { isHttpUrl } from '../utils/url'
@@ -77,6 +78,11 @@ export default function MachineCodingPanel() {
           {done} of {DELIVERABLE_TOTAL} ready
         </Badge>
       </div>
+
+      <Button as={Link} to="/notes" variant="secondary">
+        <BookOpenText className="h-4 w-4" aria-hidden="true" />
+        Open machine coding notes
+      </Button>
 
       <ProgressBar percent={percent} label="Machine coding deliverables" />
 

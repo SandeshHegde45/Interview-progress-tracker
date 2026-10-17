@@ -64,6 +64,11 @@ export function TrackerProvider({ children }) {
     [setQuestions],
   )
 
+  const updateQuestionNotes = useCallback(
+    (id, patch) => setQuestions((prev) => prev.map((q) => (q.id === id ? { ...q, ...patch } : q))),
+    [setQuestions],
+  )
+
   const deleteQuestion = useCallback(
     (id) => setQuestions((prev) => prev.filter((q) => q.id !== id)),
     [setQuestions],
@@ -80,11 +85,21 @@ export function TrackerProvider({ children }) {
       addQuestion,
       importSheet,
       updateStatus,
+      updateQuestionNotes,
       deleteQuestion,
       machine,
       updateMachine,
     }),
-    [questions, addQuestion, importSheet, updateStatus, deleteQuestion, machine, updateMachine],
+    [
+      questions,
+      addQuestion,
+      importSheet,
+      updateStatus,
+      updateQuestionNotes,
+      deleteQuestion,
+      machine,
+      updateMachine,
+    ],
   )
 
   return <TrackerContext.Provider value={value}>{children}</TrackerContext.Provider>

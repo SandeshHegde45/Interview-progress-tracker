@@ -1,7 +1,7 @@
 import { focusRing } from './styles'
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 disabled:translate-y-0 disabled:opacity-50'
+  'inline-flex items-center justify-center gap-2 rounded-xl text-sm transition-colors duration-200 disabled:opacity-50'
 
 const VARIANTS = {
   primary:
