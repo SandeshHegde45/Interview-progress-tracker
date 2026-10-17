@@ -1,6 +1,14 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router'
-import { CheckCircle2, Code2, ClipboardList, ListChecks, MessageSquareText } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  Code2,
+  ClipboardList,
+  ListChecks,
+  MessageSquareText,
+  Sparkles,
+} from 'lucide-react'
 import { useTracker } from '../context/useTracker'
 import { byCategory, computeStats } from '../utils/stats'
 import { CATEGORIES, CATEGORY_LABELS } from '../utils/constants'
@@ -19,33 +27,59 @@ export default function DashboardPage() {
   const stats = useMemo(() => computeStats(questions), [questions])
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold">This week&apos;s preparation</h1>
-        <p className={`mt-1 text-sm ${mutedText}`}>
-          Your progress across every question you&apos;ve added.
-        </p>
-      </div>
-
-      <Card as="section" aria-label="Overall progress">
-        <div className="flex items-end justify-between gap-4">
+    <div className="page-enter space-y-7">
+      <Card as="section" aria-label="Overall progress" className="dashboard-hero p-6 sm:p-8">
+        <div className="relative z-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <div className="text-5xl font-semibold tabular-nums">{stats.percent}%</div>
-            <div className={`mt-1 text-sm ${mutedText}`}>
-              {stats.completed} of {stats.total} questions completed
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/75 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-800 ring-1 ring-emerald-900/5 dark:bg-stone-900/60 dark:text-emerald-300 dark:ring-white/10">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+              Your interview prep
+            </div>
+            <h1 className="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
+              Small steps. Strong interviews.
+            </h1>
+            <p className={`mt-3 max-w-xl text-sm leading-6 sm:text-base ${mutedText}`}>
+              Keep your practice focused, track what you&apos;ve mastered, and build confidence one
+              question at a time.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Button as={Link} to="/questions">
+                {stats.total === 0 ? 'Start practicing' : 'View your questions'}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
+              {stats.total === 0 && <LoadSheetButton variant="secondary" />}
             </div>
           </div>
-          <div className={`text-right text-sm ${mutedText}`}>
-            <div>{stats.inProgress} in progress</div>
-            <div>{stats.pending} pending</div>
+          <div className="min-w-52 rounded-2xl border border-white/70 bg-white/65 p-5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-stone-900/45">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+                  Overall progress
+                </div>
+                <div className="mt-2 text-5xl font-bold tracking-tight tabular-nums">
+                  {stats.percent}
+                  <span className="text-2xl text-emerald-700 dark:text-emerald-400">%</span>
+                </div>
+              </div>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700 dark:bg-emerald-900/60 dark:text-emerald-300">
+                <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <ProgressBar percent={stats.percent} label="Overall completion" size="lg" />
+            </div>
+            <div className={`mt-3 flex justify-between gap-4 text-xs ${mutedText}`}>
+              <span>{stats.completed} completed</span>
+              <span>{stats.total} total</span>
+            </div>
           </div>
-        </div>
-        <div className="mt-4">
-          <ProgressBar percent={stats.percent} label="Overall completion" size="lg" />
         </div>
       </Card>
 
-      <section aria-label="Summary" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section
+        aria-label="Summary"
+        className="stagger-in grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+      >
         <StatCard icon={ClipboardList} label="Total questions" value={stats.total} />
         <StatCard
           icon={Code2}
@@ -78,8 +112,16 @@ export default function DashboardPage() {
           }
         />
       ) : (
-        <Card as="section" aria-label="Progress by category">
-          <h2 className="text-base font-semibold">By category</h2>
+        <Card as="section" aria-label="Progress by category" className="hover:shadow-md">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-bold tracking-tight">Your progress by category</h2>
+              <p className={`mt-1 text-sm ${mutedText}`}>A quick look at what you&apos;ve covered.</p>
+            </div>
+            <span className="hidden h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 sm:flex dark:bg-indigo-950/60 dark:text-indigo-300">
+              <ListChecks className="h-5 w-5" aria-hidden="true" />
+            </span>
+          </div>
           <ul className="mt-4 space-y-4">
             {CATEGORIES.map((c) => {
               const s = byCategory(questions, c)

@@ -12,7 +12,7 @@ export default function Card({
     : 'border-stone-200 dark:border-stone-800'
   return (
     <Component
-      className={`rounded-xl border bg-white dark:bg-stone-900 ${border} ${PADDING[padding]} ${className}`}
+      className={`rounded-2xl border bg-white/90 shadow-sm shadow-stone-900/[0.035] transition-[box-shadow,transform,border-color] duration-200 dark:bg-stone-900/90 dark:shadow-black/10 ${border} ${PADDING[padding]} ${className}`}
       {...props}
     />
   )

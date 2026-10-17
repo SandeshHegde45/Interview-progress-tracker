@@ -1,16 +1,16 @@
 import { focusRing } from './styles'
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 rounded-md text-sm transition-colors disabled:opacity-50'
+  'inline-flex items-center justify-center gap-2 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 disabled:translate-y-0 disabled:opacity-50'
 
 const VARIANTS = {
   primary:
-    'px-4 py-2 font-medium bg-stone-900 text-white hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white',
+    'px-4 py-2.5 font-semibold bg-emerald-700 text-white shadow-sm shadow-emerald-900/15 hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300',
   secondary:
-    'px-4 py-2 font-medium border border-stone-300 bg-white text-stone-900 hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800',
+    'px-4 py-2.5 font-medium border border-stone-200 bg-white text-stone-800 shadow-sm hover:border-stone-300 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800',
   ghost:
     'gap-1 text-stone-600 underline-offset-2 hover:underline dark:text-stone-400',
-  icon: 'p-2 text-stone-600 hover:bg-stone-200 dark:text-stone-300 dark:hover:bg-stone-800',
+  icon: 'p-2 text-stone-600 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800',
   'icon-danger':
     'p-2 text-stone-500 hover:bg-rose-50 hover:text-rose-600 dark:text-stone-400 dark:hover:bg-rose-950 dark:hover:text-rose-400',
 }

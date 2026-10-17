@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Inbox, SearchX } from 'lucide-react'
+import { ClipboardList, Inbox, SearchX } from 'lucide-react'
 import { useTracker } from '../context/useTracker'
 import QuestionForm from '../components/QuestionForm'
 import SheetImport from '../components/SheetImport'
@@ -30,9 +30,18 @@ export default function QuestionsPage() {
   }, [questions, filters])
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-semibold">Questions</h1>
+    <div className="page-enter space-y-7">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+            <ClipboardList className="h-4 w-4" aria-hidden="true" />
+            YOUR PRACTICE LIBRARY
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight">Questions</h1>
+          <p className={`mt-2 text-sm ${mutedText}`}>
+            Add, organize, and revisit the questions that move you forward.
+          </p>
+        </div>
         <LoadSheetButton />
       </div>
 
